@@ -1,0 +1,12 @@
+{
+  "name": "hypurr-postgraphile",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "postgraphile": "^4.14.1",
+    "express": "^4.18.2"
+  }
+}
