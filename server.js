@@ -25,5 +25,5 @@ app.use(
 );
 
 app.listen(port, '0.0.0.0', () => {
-  console.log(\`PostGraphile server listening on http://0.0.0.0:\${port}\`);
+  console.log(`PostGraphile server listening on http://0.0.0.0:${port}`);
 });
