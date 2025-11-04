@@ -1,18 +1,21 @@
 const { postgraphile } = require('postgraphile');
 const express = require('express');
+const { Pool } = require('pg');
 
 const app = express();
 const port = process.env.PORT || 4000;
 const dbUrl = process.env.DATABASE_URL;
 
-// Configure SSL for PostgreSQL connection
-const pgConfig = {
+// Create PostgreSQL pool with SSL configuration
+const pool = new Pool({
   connectionString: dbUrl,
-  ssl: dbUrl.includes('sslmode=require') ? { rejectUnauthorized: false } : false
-};
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 
 app.use(
-  postgraphile(pgConfig, 'public', {
+  postgraphile(pool, 'public', {
     watchPg: false,
     graphiql: true,
     enhanceGraphiql: true,
